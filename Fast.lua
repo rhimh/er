@@ -19,7 +19,7 @@ if TokenBot and TokenBot:match('(%d+):(.*)') then
 local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getMe')
 local Json_Info = JSON.decode(url)
 if res ~= 200 then
-print('\27[1;34mعذرا توكن البوت خطأ تحقق منه وارسله مره اخره \nBot Token is Wrong\n')
+print('\27[1;34mعذرا توكن البوت خطأ تحقق منه وارسله مره اخرى \nBot Token is Wrong\n')
 else
 io.write('\27[1;34mتم حفظ التوكن بنجاح \nThe token been saved successfully \n\27[0;39;49m')
 TheTokenBot = TokenBot:match("(%d+)")
@@ -28,7 +28,7 @@ Redis:set(SshId.."Info:Redis:Token",TokenBot)
 Redis:set(SshId.."Info:Redis:Token:User",Json_Info.result.username)
 end 
 else
-print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
+print('\27[1;34mلم يتم حفظ التوكن جرب مره اخرى \nToken not saved, try again')
 end 
 os.execute('lua5.2 Fast.lua')
 end
@@ -80,7 +80,7 @@ Token = Information.Token
 UserBot = Information.UserBot
 Fast = Token:match("(%d+)")
 os.execute('sudo rm -fr .CallBack-Bot/'..Fast)
-bot = Fx.Fastbots.set_config{api_id=1846213,api_hash='c545c613b78f18a30744970910124d53',session_name=Fast,token=Token}
+bot = Fx.Fastbots.set_config{api_id=28904972,api_hash='7c107be9da6bab2dd1424b3c038de2c5',session_name=Fast,token=Token}
 function var(value)
 print(serpent.block(value, {comment=false}))   
 end 
@@ -111,7 +111,7 @@ while clock() - t0 <= n do end
 end
 function Dev(msg) 
 ok = false
-local list = {Sudo_Id,5183920797}
+local list = {Sudo_Id,863354031}
 for k,v in pairs(list) do
 if tonumber(msg.sender_id.user_id) == tonumber(v) then
 ok = true
@@ -174,7 +174,7 @@ end
 if Redis:get(Fast.."chsource") then
 chsource = Redis:get(Fast.."chsource")
 else
-chsource = "S_a_i_d_i"
+chsource = "CCCCA11"
 end
 function Reply_Status(UserId,TextMsg)
 local UserInfo = bot.getUser(UserId)
@@ -235,7 +235,7 @@ Redis:del(Fast..data.sender_id.user_id.."jabwa:bot")
 reply_markup = bot.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-{text = '✧ قسم الحماية',type = 'text'},{text = '◍ قسم الاغاني',type = 'text'},
+{text = '• قسم الحماية قريبا',type = 'text'},{text = '◍ قسم الاغاني',type = 'text'},
 },
 }
 }
@@ -350,7 +350,7 @@ local gp_id = Redis:get(Fast..data.sender_id.user_id.."gp:id")
 local gp_user = Redis:get(Fast..data.sender_id.user_id.."gp:user")
 ----------------
 local env = io.open("./source/.env", 'w')
-env:write("API_ID = "..app_id.."\nAPI_HASH = "..api_hash.."\nBOT_TOKEN = "..token.."\nMONGO_DB_URI = mongodb+srv://semoelnqyb:semoELNQYB1@semoelnqyb.lufi1es.mongodb.net/?retryWrites=true&w=majority\nLOG_GROUP_ID = "..gp_id.."\nMUSIC_BOT_NAME = "..userbot.."\nSTRING_SESSION = "..session.."\nOWNER_ID = "..dev_id.."")
+env:write("API_ID = "..app_id.."\nAPI_HASH = "..api_hash.."\nBOT_TOKEN = "..token.."\nMONGO_DB_URI = mongodb+srv://FSBOT:faisal9876@cluster0.68fihqh.mongodb.net/?retryWrites=true&w=majority\nLOG_GROUP_ID = "..gp_id.."\nMUSIC_BOT_NAME = "..userbot.."\nSTRING_SESSION = "..session.."\nOWNER_ID = "..dev_id.."")
 env:close()
 sleep(3)
 send(data.chat_id,0,"◍ تم حفظ بيانات البوت جاري التشغيل يرجي الانتظار ...","md",true)  
@@ -384,7 +384,7 @@ if text and Redis:get(Fast..data.sender_id.user_id.."helper") then
 local UserName = text:match("^@(.*)$")
 if UserName then
 Redis:set(Fast..data.sender_id.user_id.."ch:7oda",UserName)
-return send(data.chat_id,data.id,"◍ تم حفظ قناه الاشتراك الاجباري \n◍ ارسل الان معرف جروب الدعم\nوتأكد ان البوت مشرف بالجروب !","md",true)  
+return send(data.chat_id,data.id,"◍ تم حفظ قناه الاشتراك الاجباري \n◍ ارسل الان معرف قروب الدعم\nوتأكد ان البوت مشرف بالقروب !","md",true)  
 end
 end
 if text and text:match("^(%d+)$") and Redis:get(Fast..data.sender_id.user_id.."session") then
@@ -686,11 +686,11 @@ data = {
 },
 }
 }
-send(msg.chat_id,msg.id,"*◍ مرحبا اليك قسم صانع الميوزك ◍\n\n◍ قناة التحديثات (@SOURCE_ELNGOM) ◍\n\n◍ جروب الدعم (@T_S_T1) ◍\n\n◍ المطور سيمو (@S_E_M_O_E_L_K_B_E_R) ◍*","html",true, false, false, true, reply_markup)
+send(msg.chat_id,msg.id,"*◍ مرحبا بك في قسم صانع الميوزك ◍\n\n◍ قناة التحديثات (@CCCCA11) ◍\n\n◍ قروب الدعم (@un112) ◍\n\n◍ المطور فيصل (@un112) ◍*","html",true, false, false, true, reply_markup)
 return false 
 end
-if text == 'سيمو' or text == '◍ مبرمج السورس' or text == 'مطور السورس ◍' then  
-local UserId_Info = bot.searchPublicChat("S_E_M_O_E_L_K_B_E_R")
+if text == 'Double Shot' or text == '◍ مبرمج السورس' or text == 'مطور السورس ◍' then  
+local UserId_Info = bot.searchPublicChat("un112")
 if UserId_Info.id then
 local UserInfo = bot.getUser(UserId_Info.id)
 local InfoUser = bot.getUserFullInfo(UserId_Info.id)
@@ -706,11 +706,11 @@ username = ''
 end
 local photo = bot.getUserProfilePhotos(UserId_Info.id)
 if photo.total_count > 0 then
-local TestText = "*✯ مبرمج سورس النجوم ◍\n✯ ɴᴀᴍᴇ ->* ["..UserInfo.first_name.."](tg://user?id="..UserId_Info.id..")\n*✯ ʙɪᴏ -> "..Bio.." *"
+local TestText = "*♪ مبرمج سورس ميوزك ون ◍\n♪ ɴᴀᴍᴇ ->* ["..UserInfo.first_name.."](tg://user?id="..UserId_Info.id..")\n*♪ ʙɪᴏ -> "..Bio.." *"
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = username, url = "https://t.me/S_E_M_O_E_L_K_B_E_R"}
+{text = username, url = "https://t.me/un112"}
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -720,7 +720,7 @@ local TestText = "- معلومات مبرمج السورس : \\nn: name Dev . ["
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = username, url = "https://t.me/S_E_M_O_E_L_K_B_E_R"}
+{text = username, url = "https://t.me/un112"}
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -731,21 +731,21 @@ end
 if text == '◍ سورس' or text == 'يا سورس' or text == 'السورس' or text == 'source' then
 video = "https://t.me/WORLED_SEMO/160"
 local T =[[
-☆︙[𝑊𝐸𝐿𝐶𝑂𝑀𝐸 𝑇𝑂 𝑆𝑂𝑈𝑅𝐶𝐸 𝒔𝒖𝑂𝑅𝐶𝐸 𝐸𝐿𝑁𝐺𝑂𝑂𝒎](t.me/SOURCE_ELNGOM )
+☆︙[𝑊𝐸𝐿𝐶𝑂𝑀𝐸 𝑇𝑂 𝑆𝑂𝑈𝑅𝐶𝐸 𝒔𝒖𝑂𝑅𝐶𝐸 𝐸𝐿𝑁𝐺𝑂𝑂𝒎](t.me/CCCCA11 )
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '• مبرمج السورس •', url = 't.me/S_E_M_O_E_L_K_B_E_R'},
+{text = '• مبرمج السورس •', url = 't.me/un112'},
 },
 {
-{text = '• تواصل السورس •', url = 't.me/T_S_T1'},
+{text = '• تواصل السورس •', url = 't.me/un112'},
 },
 {
-{text = '• قناة التحديثات •', url = 't.me/SOURCE_ELNGOM '},
+{text = '• قناة التحديثات •', url = 't.me/CCCCA11 '},
 },
 {  
-{text = '• 𝑆𝑂𝑈𝑅𝐶𝐸 𝒔𝒖𝑂𝑅𝐶𝐸 𝐸𝐿𝑁𝐺𝑂𝑂𝒎 •', url = 't.me/SOURCE_ELNGOM'},
+{text = '• 𝘴𝘰𝘶𝘳𝘤𝘦 𝘮𝘶𝘴𝘪𝘤 𝒐𝒏𝒆¹ ♪ •', url = 't.me/CCCCA11'},
 },
 }
 local msgg = msg.id/2097152/0.5
@@ -771,7 +771,7 @@ local gp_id = Redis:get(Fast..data.sender_id.user_id.."gp:id")
 local gp_user = Redis:get(Fast..data.sender_id.user_id.."gp:user")
 ----------------
 local env = io.open("./source/.env", 'w')
-env:write("API_ID = "..app_id.."\nAPI_HASH = "..api_hash.."\nBOT_TOKEN = "..token.."\nMONGO_DB_URI = mongodb+srv://semoelnqyb:semoELNQYB1@semoelnqyb.lufi1es.mongodb.net/?retryWrites=true&w=majority\nLOG_GROUP_ID = "..gp_id.."\nMUSIC_BOT_NAME = "..userbot.."\nSTRING_SESSION = "..session.."\nOWNER_ID = "..dev_id.."")
+env:write("API_ID = "..app_id.."\nAPI_HASH = "..api_hash.."\nBOT_TOKEN = "..token.."\nMONGO_DB_URI = mongodb+srv://FSBOT:faisal9876@cluster0.68fihqh.mongodb.net/?retryWrites=true&w=majority\nLOG_GROUP_ID = "..gp_id.."\nMUSIC_BOT_NAME = "..userbot.."\nSTRING_SESSION = "..session.."\nOWNER_ID = "..dev_id.."")
 env:close()
 sleep(3)
 send(data.chat_id,0,"◍ تم حفظ بيانات البوت جاري التشغيل يرجي الانتظار ...","md",true)  
@@ -804,7 +804,7 @@ if text and Redis:get(Fast..data.sender_id.user_id.."helper") then
 local UserName = text:match("^@(.*)$")
 if UserName then
 Redis:set(Fast..data.sender_id.user_id.."ch:7oda",UserName)
-return send(data.chat_id,data.id,"◍ تم حفظ قناه الاشتراك الاجباري \n◍ ارسل الان معرف جروب الدعم\nوتأكد ان البوت مشرف بالجروب !","md",true)  
+return send(data.chat_id,data.id,"◍ تم حفظ قناه الاشتراك الاجباري \n◍ ارسل الان معرف قروب الدعم\nوتأكد ان البوت مشرف بالقروب !","md",true)  
 end
 end
 if text and text:match("^(%d+)$") and Redis:get(Fast..data.sender_id.user_id.."session") then
