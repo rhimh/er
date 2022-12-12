@@ -11,16 +11,18 @@ from typing import Dict, List, Union
 
 from YukkiMusic.core.mongo import mongodb
 
-
+queriesdb = mongodb.queries
 userdb = mongodb.userstats
 chattopdb = mongodb.chatstats
 authuserdb = mongodb.authuser
 gbansdb = mongodb.gban
 sudoersdb = mongodb.sudoers
 chatsdb = mongodb.chats
+blacklist_chatdb = mongodb.blacklistChat
 usersdb = mongodb.tgusersdb
 playlistdb = mongodb.playlist
-
+blockeddb = mongodb.blockedusers
+privatedb = mongodb.privatechats
 
 
 # Playlist
@@ -121,6 +123,58 @@ async def add_served_chat(chat_id: int):
 
 
 # Blacklisted Chats
+
+
+async def blacklisted_chats() -> list:
+    chats_list = []
+    async for chat in blacklist_chatdb.find({"chat_id": {"$lt": 0}}):
+        chats_list.append(chat["chat_id"])
+    return chats_list
+
+
+async def blacklist_chat(chat_id: int) -> bool:
+    if not await blacklist_chatdb.find_one({"chat_id": chat_id}):
+        await blacklist_chatdb.insert_one({"chat_id": chat_id})
+        return True
+    return False
+
+
+async def whitelist_chat(chat_id: int) -> bool:
+    if await blacklist_chatdb.find_one({"chat_id": chat_id}):
+        await blacklist_chatdb.delete_one({"chat_id": chat_id})
+        return True
+    return False
+
+
+# Private Served Chats
+
+
+async def get_private_served_chats() -> list:
+    chats_list = []
+    async for chat in privatedb.find({"chat_id": {"$lt": 0}}):
+        chats_list.append(chat)
+    return chats_list
+
+
+async def is_served_private_chat(chat_id: int) -> bool:
+    chat = await privatedb.find_one({"chat_id": chat_id})
+    if not chat:
+        return False
+    return True
+
+
+async def add_private_chat(chat_id: int):
+    is_served = await is_served_private_chat(chat_id)
+    if is_served:
+        return
+    return await privatedb.insert_one({"chat_id": chat_id})
+
+
+async def remove_private_chat(chat_id: int):
+    is_served = await is_served_private_chat(chat_id)
+    if not is_served:
+        return
+    return await privatedb.delete_one({"chat_id": chat_id})
 
 
 # Auth Users DB
@@ -234,6 +288,24 @@ async def remove_sudo(user_id: int) -> bool:
 
 
 # Total Queries on bot
+
+
+async def get_queries() -> int:
+    chat_id = 98324
+    mode = await queriesdb.find_one({"chat_id": chat_id})
+    if not mode:
+        return 0
+    return mode["mode"]
+
+
+async def set_queries(mode: int):
+    chat_id = 98324
+    queries = await queriesdb.find_one({"chat_id": chat_id})
+    if queries:
+        mode = queries["mode"] + mode
+    return await queriesdb.update_one(
+        {"chat_id": chat_id}, {"$set": {"mode": mode}}, upsert=True
+    )
 
 
 # Top Chats DB
